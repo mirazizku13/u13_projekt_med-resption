@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #009688 0%, #2196f3 100%);
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50">
+    <nav class="max-w-6xl mx-auto px-4 py-6 flex justify-between items-center">
+        <div class="text-2xl font-bold text-teal-600 flex items-center gap-2">
+            <span>🩺</span> MedReg
+        </div>
+
+        <div class="flex items-center gap-6">
+            {% if request.user.is_authenticated %}
+                <a href="accounts/auth/session/" class="btn btn-info">profile</a>
+                <a href="accounts/auth/logout/" class="btn btn-warning">logout</a>
+
+            {% else %}
+
+                <a href="/" class="text-gray-600 hover:text-teal-600 font-medium">Bosh sahifa</a>
+                <a href="/accounts/auth/" class="text-gray-600 hover:text-teal-600 font-medium">Ro'yxatdan o'tish</a>
+                <a href="/accounts/auth/login/" class="bg-teal-600 text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition">Kirish</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="hero-gradient rounded-3xl p-12 text-white shadow-2xl">
+            <h1 class="text-4xl font-bold mb-6">Shifoxonaga onlayn ro'yxatdan o'ting — navbatsiz</h1>
+            <p class="max-w-xl mb-8 opacity-90">MedReg orqali bir necha daqiqada arizangizni qoldiring. Mutaxassis shifokor holatingizni ko'rib chiqadi va siz bilan bog'lanadi. Hammasi onlayn, qulay va bepul.</p>
+
+            <div class="flex gap-4">
+                <button class="bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold">Ariza qoldirish</button>
+                <button class="border border-white/30 px-6 py-3 rounded-lg">Xodim sifatida kirish</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="text-teal-500 mb-4 text-2xl">📝</div>
+                <h3 class="font-bold mb-2">1. Arizani to'ldiring</h3>
+                <p class="text-sm text-gray-500">Ism, telefon va holatingizni qisqacha yozing — bir daqiqada tayyor.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="text-teal-500 mb-4 text-2xl">👩‍⚕️</div>
+                <h3 class="font-bold mb-2">2. Shifokorga yo'naltiriladi</h3>
+                <p class="text-sm text-gray-500">Administrator arizangizni mos mutaxassis shifokorga biriktiradi.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="text-teal-500 mb-4 text-2xl">📧</div>
+                <h3 class="font-bold mb-2">3. Javobni kuting</h3>
+                <p class="text-sm text-gray-500">Qaror qabul qilinishi bilan email orqali xabar yuboramiz.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="text-teal-500 mb-4 text-2xl">💰</div>
+                <h3 class="font-bold mb-2">4. Narxni ko'ring</h3>
+                <p class="text-sm text-gray-500">Muolaja narxi muolajalar soniga qarab avtomatik hisoblanadi.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
