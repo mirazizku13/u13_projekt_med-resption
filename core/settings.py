@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 #     local
     'accounts',
-    'doctors',
+    # 'doctors',
     'patient',
 ]
 
