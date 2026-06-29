@@ -1,21 +1,8 @@
 from django.db import models
+from accounts.models import User
 
-class Profession(models.TextChoices):
-    LOR = "LOR", "LOR"
-    THERAPIST = "THERAPIST", "Therapist"
-    SURGEON = "SURGEON", "Surgeon"
-    DENTIST = "DENTIST", "Dentist"
-    CARDIOLOGIST = "CARDIOLOGIST", "Cardiologist"
 
-class Doctors(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.IntegerField()
-    profession = models.CharField(
-        max_length=100,
-        choices=Profession.choices
-    )
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+class Doctor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    specialization = models.CharField(max_length=200)
+    procedure_cost = models.DecimalField(max_digits=10, decimal_places=2)
