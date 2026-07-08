@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 
+from doctors.models import Doctor
+
 
 class Patient(models.Model):
     user = models.OneToOneField(
@@ -9,11 +11,15 @@ class Patient(models.Model):
         related_name='patient_profile',
         verbose_name='Foydalanuvchi'
     )
-    registration_number = models.CharField(
-        max_length=20,
-        unique=True,
-        verbose_name='Registratsiya raqami'
+
+    doctor = models.ForeignKey(
+        Doctor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="patients"
     )
+
     condition = models.CharField(
         max_length=200,
         blank=True,
