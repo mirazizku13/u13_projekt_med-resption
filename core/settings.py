@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 #     local
     'accounts',
     'doctors',
+    'patients',
+    'referral'
 ]
 
 MIDDLEWARE = [
