@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 
+from doctors.models import Doctor
+
 
 class Patient(models.Model):
     user = models.OneToOneField(
@@ -8,6 +10,14 @@ class Patient(models.Model):
         on_delete=models.CASCADE,
         related_name='patient_profile',
         verbose_name='Foydalanuvchi'
+    )
+
+    doctor = models.ForeignKey(
+        Doctor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="patients"
     )
     registration_number = models.CharField(
         max_length=20,

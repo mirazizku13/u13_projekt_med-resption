@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.core.serializers import serialize
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
+from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 
 from accounts.serializers import LoginSerializer, UserSerializer
@@ -11,14 +12,15 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework import viewsets, status, permissions
-from rest_framework.mixins import CreateModelMixin
+from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin, \
+    DestroyModelMixin
 from rest_framework.response import Response
 from accounts.models import User
 from accounts.serializers import LoginSerializer, UserSerializer, UserCreateSerializer
 from rest_framework.authentication import TokenAuthentication
 
 # Create your views here.
-class AuthViewSet(viewsets.GenericViewSet, CreateModelMixin):
+class AuthViewSet(viewsets.GenericViewSet, CreateModelMixin , ListModelMixin , RetrieveModelMixin , UpdateModelMixin , DestroyModelMixin):
     queryset = User.objects.all()
     serializer_class = UserCreateSerializer
 
